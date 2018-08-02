@@ -6,5 +6,5 @@ Gemfile.lock
 
 # Ignore nextflow temp files/folders
 work/
-.*log
+.nextflow*log*
 .nextflow/
