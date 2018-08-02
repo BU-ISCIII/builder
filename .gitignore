@@ -1,4 +1,10 @@
 _site
 Gemfile.lock
+# Ignore images
 *.simg
 *.img
+
+# Ignore nextflow temp files/folders
+work/
+.*log
+.nextflow/
