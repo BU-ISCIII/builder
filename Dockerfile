@@ -24,4 +24,9 @@ ADD *.scif /
 RUN scif install /recipe.scif
 
 # SciF Entrypoint
-ENTRYPOINT ["scif"]
+#ENTRYPOINT ["scif"]
+
+# Import PATH and LB_LIBRARY_PATH
+RUN find /scif/apps -maxdepth 2 -name "bin" | while read in; do echo "export PATH=\$PATH:$in" >> /etc/bashrc;done 
+RUN if [ -z "${LD_LIBRARY_PATH-}" ]; then echo "export LD_LIBRARY_PATH=/usr/local/lib" >> /etc/bashrc;fi
+RUN find /scif/apps -maxdepth 2 -name "lib" | while read in; do echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$in" >> /etc/bashrc;done
